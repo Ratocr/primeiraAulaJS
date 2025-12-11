@@ -1,0 +1,3 @@
+const s1 = "Ana", s2 = "Bruno";
+console.log("6a) 'Ana' < 'Bruno':", s1 < s2);  // true
+console.log("6b) 'Ana' > 'Bruno':", s1 > s2);  // false
