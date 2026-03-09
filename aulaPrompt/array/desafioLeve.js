@@ -1,12 +1,8 @@
 let tarefas = ["estudar", "treinar", "dormir"]
 tarefas.push('comer')
-console.log(tarefas)
 tarefas.unshift('trabalhar')
-console.log(tarefas)
 tarefas.pop()
-console.log(tarefas)
 tarefas.shift()
-console.log(tarefas)
 console.log(tarefas.includes('estudar'))
 console.log(tarefas.indexOf('dormir'))
 console.log(tarefas.sort())
