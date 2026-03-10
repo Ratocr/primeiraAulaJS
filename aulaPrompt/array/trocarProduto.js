@@ -12,4 +12,4 @@ if (produtos.includes('monitor')){
     console.log('Já tem monitor gamer')
 }
 }
-console.log(produtos)
+console.log(produtos) 
