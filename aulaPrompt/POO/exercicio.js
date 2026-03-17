@@ -1,35 +1,26 @@
-// class Pessoa{
-//     constructor(nome,idade){
-//         this.nome = nome
-//         this.idade = idade
-//     }
+const prompt = require('prompt-sync')()
 
-//     apresentar(){
-//         console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade}  anos`)
-//     }
-// }
 
-// let pessoa1 =  new Pessoa('Hugo',18)
-// pessoa1.apresentar()
 
-class Produto{
-    constructor(nome,validade,quantidade){
+class Pessoa{
+    constructor(nome,idade){
         this.nome = nome
-        this.validade = validade
-        this.quantidade = quantidade
+        this.idade = idade
     }
+
     apresentar(){
-        console.log(`
-            Produto: ${this.nome} 
-            Validade: ${this.validade}
-            Quantidade ${this.quantidade}`)
+        console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade}  anos`)
     }
 }
 
-let produto1 =  new Produto ('Farinha de Trigo','10/08/2026',1)
-let produto2 =  new Produto ('Café em grãos','15/12/2026',15)
-let produto3 =  new Produto ('Filtro Café','Inderteminado',500)
+const nomeInformado = prompt('Digite o seu nome: ');
+const idadeInformada = prompt('Digite sua idade: ');
 
-produto1.apresentar()
-produto2.apresentar()
-produto3.apresentar()
+let pessoa1 =  new Pessoa (nomeInformado, idadeInformada)
+
+pessoa1.apresentar()
+
+
+
+
+
