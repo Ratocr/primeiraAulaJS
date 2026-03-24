@@ -74,5 +74,5 @@ class Pedido {
         }
 
         this.item.forEach((item, index) => {console.log(`${index + 1}, ${item.nome}, R$ ${this.preco}`)})
-    }
+    } afs
 }
