@@ -1,7 +1,7 @@
 class Produto {
     constructor(nome, preco, quantidade) {
         this.nome = nome
-        this.preco = preco.toFixed(2)
+        this.preco = preco
         this.quantidade = quantidade
     }
 
@@ -12,17 +12,17 @@ class Produto {
 
     vender() {
         if (this.quantidade > 0) {
-            this.quantidade--
+            this.quantidade --
             console.log(`Unidade de ${this.nome} foi vendida`)
         } else {
             console.log(`${this.nome} está sem estoque`)
         }
     }
 
-    repor(qtdReposicao) {
-        if (quantidade > 0) {
-            this.quantidade += qtdReposicao
-            console.log(`${this.quantidade} de ${this.nome} adicionadas ao estoque`)
+    repor(quantidade) {
+        if (quantidade> 0) {
+            this.quantidade += quantidade
+            console.log(`${this.quantidade}  ${this.nome} adicionadas ao estoque`)
         } else {
             console.log('Quantidade inválida')
         }
@@ -61,12 +61,12 @@ class Pedido {
         this.itens = []
     }
 
-
     adicionarItem(produto) {
         if (produto.quantidade > 0) {
-            this.itens.push(produto)
+            this.itens.push (produto)
+            console.log(`${produto.nome} foi adicionado ao pedido, ainda tem em estoque ${produto.quantidade}`)
         } else {
-            console.log(`${this.nome} está sem estoque`)
+            console.log(`${produto.nome} está sem estoque`)
         }
     }
 
@@ -78,9 +78,7 @@ class Pedido {
         }
         // for each quer dizer PARA CADA 
         this.itens.forEach((item, index) => {
-            console.log(`${index + 1}, ${item.nome},
-             R$ ${this.preco}
-            `)
+            console.log(`${index + 1} - ${item.nome} R$ ${item.preco}`)
         })
     }
 
@@ -96,9 +94,9 @@ class Pedido {
     }
 
     fecharPedido(){
-        this.verPedido()
+        this.verPedidos()
 
-        console.log(`Total a a pagar ${this.calcularTotal()}`)
+        console.log(`Total a pagar R$ ${this.calcularTotal().toFixed(2)}`)
     }
 }
 
@@ -128,7 +126,7 @@ class Cafeteria{
         for (let i = 0; i < this.cardapio.length ; i ++ ){
             let produto = this.cardapio[i]
 
-            console.log((i + 1) + '.' + produto.nome + ' - R$ ' + produto.preco)
+            console.log((i + 1) + '.' + produto.nome + ' - R$ ' + produto.preco + ' Estoque: ' + produto.quantidade )
         }
     }
 
@@ -142,12 +140,12 @@ class Cafeteria{
 const cafeteria = new Cafeteria('Cafezão')
 
 // Criando bebidas
-const cafeExpresso = new Bebida('Cafezinho',5,1,`pequeno`)
+const cafeExpresso = new Bebida('Cafezinho',5,2,`pequeno`)
 const cappuccino = new Bebida('Cappuccino',10, 1,'Grande')
 
 
 // Criando comidas
-const paoQue = new Comida('Pão de queijo', 10,5,'Salgada')
+const paoQue = new Comida('Pão de queijo', 10,5,'Salgado')
 const croissant = new Comida('Croissant', 25,2,'Salgado')
 const torta = new Comida('Torta de morango', 15,2,'Doce')
 
@@ -159,5 +157,27 @@ cafeteria.adicionarProduto(torta)
 
 cafeteria.listarCardapio()
 
+console.log('-----Teste Vendas AVU-----')
+
+cafeExpresso.vender()
+cappuccino.vender()
+paoQue.vender()
+paoQue.vender()
+paoQue.vender()
+paoQue.vender()
+paoQue.vender()
+paoQue.vender()
+
+console.log('-----REPONDO PÃO DE QUEIJO-----')
+paoQue.repor(10)
+
+paoQue.exibirProduto()
 
 
+console.log('-----CRIANDO PEDIDO-----')
+const pedido1 =  new Pedido('Hugo')
+
+pedido1.adicionarItem(paoQue)
+pedido1.adicionarItem(cafeExpresso)
+
+pedido1.fecharPedido()
