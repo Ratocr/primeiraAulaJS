@@ -82,17 +82,29 @@ class Pedido {
         })
     }
 
-
     calcularTotal() {
         let total = 0
 
-        this.itens.forEach(item => {
-            total += item.preco
-        });
+        this.itens.forEach(item => { total += item.preco});
 
         return total
     }
 
+     removerUltimoItem(){
+       if (this.itens.length > 0){
+        const removerItem = this.itens.pop()
+        console.log(`O item ${removerItem.nome} foi removido `)
+        } else{
+            console.log('Sem item no pedido')
+        } 
+     }
+
+     contarItens(){
+         return console.log(this.itens.length) 
+               
+    }
+
+    
     fecharPedido(){
         this.verPedidos()
 
@@ -130,10 +142,21 @@ class Cafeteria{
         }
     }
 
-    buscarProduto(){
-        return this.cardapio.find(produto => produto.nome)
+    buscarProduto(nome){
+        return this.cardapio.find(produto => produto.nome === nome)
     }
 
+     mostrarDisponiveis(){
+        console.log(`---- PRODUTOS DISPONIVEIS ----`)
+
+    
+        this.cardapio.forEach((produto) => {
+            if (produto.quantidade > 0){
+                console.log(`${produto.nome} R$ ${produto.preco}`)
+            }
+        })
+
+     }
 }
 
 // Criar cafeteria
@@ -180,4 +203,29 @@ const pedido1 =  new Pedido('Hugo')
 pedido1.adicionarItem(paoQue)
 pedido1.adicionarItem(cafeExpresso)
 
+cafeteria.mostrarDisponiveis()
+
+pedido1.contarItens()
+
 pedido1.fecharPedido()
+
+
+// Listar cardapio novamente
+cafeteria.listarCardapio()
+
+const produtoEncotrado = cafeteria.buscarProduto('Cappuccino') // true ou false 
+
+if (produtoEncotrado) {
+    console.log('Produto foi encontrado')
+} else {
+    console.log('O produto não foi encontrado')
+}
+
+
+
+pedido1.removerUltimoItem()
+
+
+
+
+
