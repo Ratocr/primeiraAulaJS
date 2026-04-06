@@ -5,13 +5,6 @@ class Livro {
         this.disponivel = true
     }
 
-    listarLivrosDisponiveis(){
-         if (this.disponivel){
-            console.log(`Os livros disponiveis são  : ${this.disponivel}`)      
-        } else {
-            console.log(`O livro ${this.disponivel}`)
-        }
-    }
 }
 
 class Biblioteca{
