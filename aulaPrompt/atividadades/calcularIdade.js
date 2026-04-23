@@ -8,3 +8,4 @@ function calcularIdade(idade,ano){
 }
 
 console.log('Sua idade é: ', calcularIdade(idade,ano),'ano')
+teste
