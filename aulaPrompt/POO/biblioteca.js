@@ -1,80 +1,84 @@
 class Livro {
-  constructor(titulo, autor) {
-    this.titulo = titulo;
-    this.autor = autor;
-    this.disponivel = true;
-  }
+    constructor(titulo, autor){
+        this.titulo = titulo
+        this.autor = autor
+        this.disponivel = true
+    }
+
 }
 
-class Biblioteca {
-  constructor() {
-    this.livros = [];
-  }
-
-  adicionarLivro(livro) {
-    this.livros.push(livro);
-    console.log(`Livro ${livro.titulo} adicionado com sucesso`);
-  }
-
-  listarLivros() {
-    this.livros.forEach((livros) =>
-      console.log(`livro ${livros.titulo} - ${livros.autor}`),
-    );
-  }
-
-  emprestarLivro(titulo) {
-    const emprestimo = this.livros.find((livro) => livro.titulo === titulo);
-    if (emprestimo.disponivel) {
-      emprestimo.disponivel = false;
-      console.log(`Sucesso: Você pegou "${emprestimo.titulo}" emprestado.`);
+class Biblioteca{
+    constructor(){
+    this.livros = []
+    }
+    
+    adicionarLivro(livro){
+        this.livros.push(livro)
+        console.log(`Livro ${livro.titulo} adicionado com sucesso`)
+    }
+    
+    listarLivros(){
+               this.livros.forEach(livros => 
+            console.log(`livro ${livros.titulo} - ${livros.autor}`)
+        )
+    }
+        
+    emprestarLivro(titulo){
+        
+       const emprestimo  = this.livros.find( livro => livro.titulo === titulo)
+       if (emprestimo.disponivel) {
+        emprestimo.disponivel = false;
+        console.log(`Sucesso: Você pegou "${emprestimo.titulo}" emprestado.`);
     } else {
-      console.log(`O livro "${emprestimo.titulo}" já está emprestado.`);
+        console.log(`O livro "${emprestimo.titulo}" já está emprestado.`);
     }
-  }
-
-  desvolverLivro(titulo) {
-    const emprestimo = this.livros.find((livro) => livro.titulo === titulo);
-    if (emprestimo) {
-      emprestimo.disponivel = true;
-      console.log(`Você devolveu o livro ${titulo}`);
     }
-  }
 
-  contarDisponiveis() {
-    let contador = 0;
-    this.livros.forEach((livro) => {
-      if (livro.disponivel === true) {
-        contador++;
-      }
-    });
-    console.log(`Ainda tem ${contador} livro(s) disponiveil(s)`);
-  }
+    desvolverLivro(titulo){
+        const emprestimo  = this.livros.find( livro => livro.titulo === titulo)
+       if(emprestimo){
+        emprestimo.disponivel = true
+        console.log(`Você devolveu o livro ${titulo}`)
+       }
+    }  
 
-  
-  listarLivrosDisponiveis() {
-    this.livros.forEach((livro) => {
-      if (livro.disponivel === true) {
-        console.log(`Livro -  ${livro.titulo} - Autor: ${livro.autor}`);
-      }
-    });
-  }
+    contarDisponiveis(){
+       let contador = 0
+       this.livros.forEach(livro => {
+          if (livro.disponivel === true) {
+            contador++
+          }
+        })
+         console.log(`Ainda tem ${contador} livro(s) disponiveil(s)`)
 }
 
-const l1 = new Livro("Dom Casmurro", "Machado de Assis");
-const l2 = new Livro("Memorias Postumas", "Machado de Assis");
+
+    listarLivrosDisponiveis(){
+        this.livros.forEach(livro => {
+            if (livro.disponivel === true) {
+            console.log(`Livro -  ${livro.titulo} - Autor: ${livro.autor}`);
+            
+            }
+        }); 
+    }
+
+}
+
+const l1 = new Livro('Dom Casmurro', 'Machado de Assis');
+const l2 = new Livro('Memórias Póstumas', 'Machado de Assis');
+
 
 const minhaBiblioteca = new Biblioteca();
 
-minhaBiblioteca.adicionarLivro(l1);
-minhaBiblioteca.adicionarLivro(l2);
+minhaBiblioteca.adicionarLivro(l1)
+minhaBiblioteca.adicionarLivro(l2)
 
-minhaBiblioteca.listarLivros();
-minhaBiblioteca.emprestarLivro("Dom Casmurro");
+minhaBiblioteca.listarLivros()
+minhaBiblioteca.emprestarLivro('Dom Casmurro')
 
-minhaBiblioteca.contarDisponiveis();
-minhaBiblioteca.desvolverLivro("Dom Casmurro");
+minhaBiblioteca.contarDisponiveis()
+minhaBiblioteca.desvolverLivro('Dom Casmurro')
 
-minhaBiblioteca.emprestarLivro("Memorias Postumas");
 
-minhaBiblioteca.desvolverLivro("Memorias Postumas");
-minhaBiblioteca.listarLivrosDisponiveis();
+minhaBiblioteca.emprestarLivro('Memórias Póstumas')
+minhaBiblioteca.listarLivrosDisponiveis()
